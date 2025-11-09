@@ -14,11 +14,11 @@ g(\mathbb{E}[Y \mid X, \theta]) = \beta_0 + f_1(x_1) + f_2(x_2) + \dots + f_n(x_
 
 where:
 
-- \( Y \) is the response (dependent variable)
-- \( X \) is the design matrix containing the predictor (independent) variables
-- \( g(\cdot) \) is the link function
-- each \( f_j(\cdot) \) is a *smooth* function of one of the predictors \( x_j \), typically represented using splines or other basis functions
-- \( \beta_0 \) is the intercept term
+* ``Y`` is the response (dependent variable)
+* ``X`` is the design matrix containing the predictor (independent) variables
+* ``g(\cdot)`` is the link function
+* each ``f_j(\cdot)`` is a *smooth* function of one of the predictors ``x_j``, typically represented using splines or other basis functions
+* ``\beta_0`` is the intercept term
 
 A GAM is thus an extension of the generalized linear model (GLM).  
 The key difference is that a GAM uses *smooth*, flexible functions of the predictors, while maintaining an *additive* structure.  
@@ -37,6 +37,19 @@ Pkg.add(url="https://github.com/hendersontrent/GAM.jl")
 ```
 
 ---
+
+## Quick Start
+
+Fitting a GAM in GeneralizedAdditiveModels.jl is quick and easy. The syntax of the package is similar to many other packages (e.g., GLM.jl, mgcv, etc.) in that it has patsy-like formulas. For example we can fit the following GAM:
+
+```julia
+using RDatasets
+using GAM
+
+df = dataset("datasets", "trees");
+
+mod = gam("Volume ~ s(Girth, k=10, degree=3) + s(Height, k=10, degree=3)", df)
+```
 
 ## Contributing
 

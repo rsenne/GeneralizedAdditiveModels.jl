@@ -9,7 +9,7 @@ using GAM
 DocMeta.setdocmeta!(GAM, :DocTestSetup, :(using GAM); recursive=true)
 
 makedocs(
-    sitename = "GAM.jl Documentation",
+    sitename = "GAM.jl",
     modules  = [GAM],
     pages    = [
         "Home" => "index.md",
