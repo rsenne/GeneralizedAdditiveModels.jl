@@ -1,4 +1,4 @@
-# GAM.jl
+# GeneralizedAdditiveModels.jl 
 Fit, evaluate, and visualise generalised additive models (GAMs) in native Julia
 
 ## Motivation
@@ -7,7 +7,7 @@ Fit, evaluate, and visualise generalised additive models (GAMs) in native Julia
 
 ## Usage
 
-The basic interface to `GAM.jl` is the `gam` function, which is as easy as:
+The basic interface to `GeneralizedAdditiveModels.jl` is the `gam` function, which is as easy as:
 
 ```{julia}
     mod = gam("Volume ~ s(Girth, k=10, degree=3) + s(Height, k=10, degree=3)", df)
@@ -28,12 +28,14 @@ Note that currently, the following families are supported:
 * `Normal`
 * `Poisson`
 * `Gamma`
+* `Bernoulli`
 
 And the following link functions:
 
 * `Identity`
 * `Log`
+* `Logit`
 
 ## Development notes
 
-`GAM.jl` is very much in active development. Please check back for updates and new features or feel free to contribute yourself! The project to-date has been a collaboration between [Trent Henderson](https://github.com/hendersontrent) and [Mason Yahr](https://github.com/yahrMason).
+`GeneralizedAdditiveModels.jl` is very much in active development. Please check back for updates and new features or feel free to contribute yourself! The project to-date has been a collaboration between [Trent Henderson](https://github.com/hendersontrent) and [Mason Yahr](https://github.com/yahrMason).

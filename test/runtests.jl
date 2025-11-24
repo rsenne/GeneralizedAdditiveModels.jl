@@ -1,4 +1,4 @@
-using GAM
+using GeneralizedAdditiveModels
 using Test
 using RDatasets, Plots
 using Distributions
@@ -9,7 +9,7 @@ df = dataset("datasets", "trees");
 
 #-------------------- Run tests -----------------
 
-@testset "GAM.jl" begin
+@testset "GeneralizedAdditiveModels.jl" begin
 
     mod = gam("Volume ~ s(Girth, k=10, degree=3) + s(Height, k=10, degree=3)", df)
 
@@ -168,7 +168,7 @@ end
         # Check that predictions are reasonable
         x_test = [-1.0, 0.0, 1.0]
         for xi in x_test
-            pred_mat = GAM.BuildPredictionMatrix([xi], mod.Basis[1], mod.ColMeans[1])
+            pred_mat = GeneralizedAdditiveModels.BuildPredictionMatrix([xi], mod.Basis[1], mod.ColMeans[1])
             pred_eta = mod.Coef[1] .+ pred_mat * mod.Coef[mod.CoefIndex[1]]
             pred_p = 1 / (1 + exp(-pred_eta[1]))
             

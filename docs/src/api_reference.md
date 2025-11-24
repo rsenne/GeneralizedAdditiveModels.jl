@@ -1,7 +1,7 @@
 # API Reference
 
 ```@autodocs
-Modules   = [GAM]
+Modules   = [GeneralizedAdditiveModels]
 Recursive = true
 Public    = true
 Private   = false

@@ -33,7 +33,7 @@ To install the package, clone it directly from the repository:
 
 ```julia
 using Pkg
-Pkg.add(url="https://github.com/hendersontrent/GAM.jl")
+Pkg.add(url="https://github.com/hendersontrent/GeneralizedAdditiveModels.jl")
 ```
 
 ---
@@ -44,7 +44,7 @@ Fitting a GAM in GeneralizedAdditiveModels.jl is quick and easy. The syntax of t
 
 ```julia
 using RDatasets
-using GAM
+using GeneralizedAdditiveModels
 
 df = dataset("datasets", "trees");
 
@@ -55,7 +55,7 @@ mod = gam("Volume ~ s(Girth, k=10, degree=3) + s(Height, k=10, degree=3)", df)
 
 **GeneralizedAdditiveModels.jl** is under active development, and contributions are very welcome!
 
-- If you’ve found a bug or want to propose a feature, please [open an issue](https://github.com/hendersontrent/GAM.jl/issues).
+- If you’ve found a bug or want to propose a feature, please [open an issue](https://github.com/hendersontrent/GeneralizedAdditiveModels.jl/issues).
 - If your idea gets positive feedback, feel free to submit a pull request.
 - If you’re unsure where to start, you can also browse the open issues and pick one that interests you.
 

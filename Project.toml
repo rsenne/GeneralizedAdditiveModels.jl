@@ -1,4 +1,4 @@
-name = "GAM"
+name = "GeneralizedAdditiveModels"
 uuid = "cc454e9f-ce0f-441e-b193-468e31ddef4b"
 authors = ["Trent Henderson <trent.henderson1@outlook.com>"]
 version = "0.1.0"
