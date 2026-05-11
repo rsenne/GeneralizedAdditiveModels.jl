@@ -18,7 +18,8 @@ by default, `gam` uses a Normal likliehood and the identity link function. In th
 Users can also control the penalised iteratively reweighted least squares algorithm directly, as well as change the likelihood family and link function:
 
 ```{julia}
-mod = gam("Volume ~ s(Girth, k=10, degree=3) + s(Height, k=10, degree=3)",        df; Family = "Gamma", Link = "Log", 
+mod = gam("Volume ~ s(Girth, k=10, degree=3) + s(Height, k=10, degree=3)",
+          df; Family = "Gamma", Link = "Log", 
           Optimizer = NelderMead(), maxIter = 1e5,
           tol = 1e-6)
 ```
@@ -38,4 +39,4 @@ And the following link functions:
 
 ## Development notes
 
-`GeneralizedAdditiveModels.jl` is very much in active development. Please check back for updates and new features or feel free to contribute yourself! The project to-date has been a collaboration between [Trent Henderson](https://github.com/hendersontrent) and [Mason Yahr](https://github.com/yahrMason).
+`GeneralizedAdditiveModels.jl` is very much in active development. Please check back for updates and new features or feel free to contribute yourself!
