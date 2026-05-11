@@ -38,4 +38,4 @@ And the following link functions:
 
 ## Development notes
 
-`GeneralizedAdditiveModels.jl` is very much in active development. Please check back for updates and new features or feel free to contribute yourself! The project to-date has been a collaboration between [Trent Henderson](https://github.com/hendersontrent) and [Mason Yahr](https://github.com/yahrMason).
+`GeneralizedAdditiveModels.jl` is very much in active development. Please check back for updates and new features or feel free to contribute yourself!
