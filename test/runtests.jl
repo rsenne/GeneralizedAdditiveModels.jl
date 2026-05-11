@@ -1,11 +1,11 @@
-using GAM
+using GeneralizedAdditiveModels
 using Test
 using RDatasets, DataFrames, Plots
 using Distributions, Random, Statistics, LinearAlgebra
 
 #-------------------- Run tests -----------------
 
-@testset "GAM.jl Test Suite" begin
+@testset "GeneralizedAdditiveModels.jl" begin
     
     # ===========================
     # Core Gaussian GAM Tests
@@ -44,7 +44,7 @@ using Distributions, Random, Statistics, LinearAlgebra
             
             # Test partial predictions for each smooth
             for i in 1:length(mod.x)
-                partial = GAM.PredictPartial(mod, i)
+                partial = GeneralizedAdditiveModels.PredictPartial(mod, i)
                 @test length(partial) == length(mod.x[i])
                 @test !any(isnan.(partial))
                 @test !any(isinf.(partial))
@@ -202,7 +202,7 @@ using Distributions, Random, Statistics, LinearAlgebra
             
             # Linear term should have minimal degrees of freedom
             # (This assumes Height is the second term)
-            partial_height = GAM.PredictPartial(mod, 2)
+            partial_height = GeneralizedAdditiveModels.PredictPartial(mod, 2)
             @test length(unique(diff(partial_height[sortperm(df.Height)]))) < 5  # Should be nearly constant slope
         end
         
@@ -229,12 +229,12 @@ using Distributions, Random, Statistics, LinearAlgebra
             @test all(0 .<= mod.Fitted .<= 1)
             
             # Check that linear effect is captured
-            partial_linear = GAM.PredictPartial(mod, 1)
+            partial_linear = GeneralizedAdditiveModels.PredictPartial(mod, 1)
             linear_coef = cov(partial_linear, x_linear) / var(x_linear)
             @test abs(linear_coef - beta_linear) < 0.5  # Should be close to true value
             
             # Check that smooth captures nonlinearity
-            partial_smooth = GAM.PredictPartial(mod, 2)
+            partial_smooth = GeneralizedAdditiveModels.PredictPartial(mod, 2)
             smooth_sorted = partial_smooth[sortperm(x_smooth)]
             
             # Should have multiple turning points (capturing the sine wave)
@@ -295,7 +295,7 @@ using Distributions, Random, Statistics, LinearAlgebra
         x = randn(100)
         
         @testset "Uniform basis" begin
-            basis = GAM.BuildUniformBasis(x, 10, 3)
+            basis = GeneralizedAdditiveModels.BuildUniformBasis(x, 10, 3)
             @test length(basis.breakpoints) == 10
             @test basis.order == 3
             @test minimum(basis.breakpoints) ≈ minimum(x)
@@ -303,8 +303,8 @@ using Distributions, Random, Statistics, LinearAlgebra
         end
         
         @testset "Basis matrix properties" begin
-            basis = GAM.BuildUniformBasis(x, 8, 3)
-            X = GAM.BuildBasisMatrix(basis, x)
+            basis = GeneralizedAdditiveModels.BuildUniformBasis(x, 8, 3)
+            X = GeneralizedAdditiveModels.BuildBasisMatrix(basis, x)
             
             @test size(X, 1) == length(x)
             @test size(X, 2) == length(basis)
@@ -313,8 +313,8 @@ using Distributions, Random, Statistics, LinearAlgebra
         end
         
         @testset "Penalty matrix" begin
-            basis = GAM.BuildUniformBasis(x, 10, 3)
-            D = GAM.BuildDifferenceMatrix(basis)
+            basis = GeneralizedAdditiveModels.BuildUniformBasis(x, 10, 3)
+            D = GeneralizedAdditiveModels.BuildDifferenceMatrix(basis)
             
             @test size(D, 2) == length(basis)
             @test size(D, 1) == length(basis) - 2  # Second differences

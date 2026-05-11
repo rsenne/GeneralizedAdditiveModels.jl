@@ -1,4 +1,4 @@
-module GAM
+module GeneralizedAdditiveModels
 
 using Distributions, GLM, Optim, BSplines, LinearAlgebra, DataFrames, Plots, Optim
 

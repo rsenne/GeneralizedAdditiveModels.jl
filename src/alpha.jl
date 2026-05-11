@@ -4,7 +4,7 @@ Calculate alpha.
 
 Usage:
 ```julia-repl
-alpha((y, mu, Dist, Link)
+alpha(y, mu, Dist, Link)
 ```
 Arguments:
 - `y` : `Vector` containing the response variable.

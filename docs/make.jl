@@ -3,14 +3,14 @@ using Documenter
 
 # Make sure the package loads when building from docs/
 push!(LOAD_PATH, joinpath(@__DIR__, "..", "src"))
-using GAM
+using GeneralizedAdditiveModels  
 
 # Doctesting
 DocMeta.setdocmeta!(GAM, :DocTestSetup, :(using GAM); recursive=true)
 
 makedocs(
-    sitename = "GAM.jl",
-    modules  = [GAM],
+    sitename = "GeneralizedAdditiveModels.jl",
+    modules  = [GeneralizedAdditiveModels],
     pages    = [
         "Home" => "index.md",
         "API Reference" => "api_reference.md",
@@ -22,4 +22,4 @@ makedocs(
 )
 
 # for later
-# deploydocs(repo = "github.com/hendersontrent/GAM.jl.git", devbranch = "main")
+# deploydocs(repo = "github.com/hendersontrent/GeneralizedAdditiveModels.jl.git", devbranch = "main")
